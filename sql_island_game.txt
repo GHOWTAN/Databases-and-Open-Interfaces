@@ -1,0 +1,47 @@
+select * from inhabitant;
+
+select * from inhabitant where state ='friendly';
+
+select * from inhabitant where state ='friendly' and job='weaponsmith';
+select * from inhabitant where  job LIKE  '%smith' AND state ='friendly' ;
+
+
+select personid from inhabitant where name ='Stranger';
+select gold from inhabitant where name ='Stranger';
+select item,owner from item where owner is null;
+
+update item set owner = 20 where owner is null;
+
+
+select item,owner from item where owner = 20;
+
+select * from inhabitant WHERE state  ='friendly' AND (job='dealer' OR job='merchant');
+
+update item set owner = 15 where 
+item ='ring' or item = 'teapot';
+
+update inhabitant set name = 'Zhihao' where name='Stranger';
+
+select * from inhabitant where job = 'baker' order by gold desc;
+
+select * from inhabitant where job ='pilot';
+
+select inhabitant.name from village, inhabitant where inhabitant.villageid = village.villageid and village.chief = inhabitant.personid and village.name='Onionville';
+
+SELECT COUNT(*) FROM inhabitant, village WHERE village.villageid = inhabitant.villageid AND village.name = 'Onionville' and inhabitant.gender='f';
+
+SELECT inhabitant.name FROM inhabitant, village WHERE village.villageid = inhabitant.villageid AND village.name = 'Onionville' and inhabitant.gender='f';
+
+SELECT SUM(inhabitant.gold) FROM inhabitant, village WHERE village.villageid = inhabitant.villageid AND (village.name = 'Cucumbertown' or village.name = 'Monkeycity'or village.name = 'Onionville') and (inhabitant.job= 'baker' or inhabitant.job='dealer' or inhabitant.job='merchant'); 
+
+//SELECT job, SUM(inhabitant.gold), AVG(inhabitant.gold) FROM inhabitant GROUP BY job ORDER BY AVG(inhabitant.gold)
+
+SELECT state,  AVG(inhabitant.gold) FROM inhabitant GROUP BY state order by state
+
+//DELETE FROM inhabitant WHERE name = 'Dirty Dieter'
+
+DELETE FROM inhabitant WHERE state = 'evil'
+
+update inhabitant set state ='friendly' where state='kidnapped'
+
+
