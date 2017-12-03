@@ -1,0 +1,48 @@
+SELECT * FROM family_members;
+select name, species from family_members;
+select * from family_members where species='dog'
+select * from family_members where num_books_read > 190
+select * from family_members where num_books_read >=180
+
+SELECT * FROM friends_of_pickles WHERE height_cm <45 AND species = 'dog';
+SELECT * FROM friends_of_pickles WHERE height_cm <45 or species = 'dog';
+select * from friends_of_pickles where species not in ('cat','dog')
+select distinct species from friends_of_pickles  where height_cm > 50
+
+select * from friends_of_pickles  order by height_cm desc
+select * from friends_of_pickles  order by height_cm desc limit 1
+select count(*) from friends_of_pickles
+select count(*) from friends_of_pickles where species='dog'
+select sum(num_books_read) from family_members
+SELECT AVG(num_books_read) FROM family_members;
+SELECT max(num_books_read) FROM family_members;
+SELECT  max(height_cm), species FROM friends_of_pickles GROUP BY species
+select * from family_members where num_books_read = (select max(num_books_read) from family_members);
+select * from family_members where favorite_book is not null
+select * from celebs_born where birthdate > '1980-09-01'
+
+
+select character.name, character_actor.actor_name from character inner join character_actor on character.id=character_actor.character_id 
+
+select character.name, actor.name from character
+inner join character_actor on character_actor.character_id=character.id
+inner join actor on actor.id=character_actor.actor_id
+
+select character.name, tv_show.name from character 
+inner join character_tv_show on character.id=character_tv_show.character_id
+inner join tv_show on character_tv_show.tv_show_id=tv_show.id
+where character.name !='Willow Rosenberg' and tv_show.name!='How I Met Your Mother'
+
+SELECT character.name, actor.name
+FROM character
+LEFT JOIN character_actor
+ON character.id = character_actor.character_id
+LEFT JOIN actor
+ON character_actor.actor_id = actor.id;
+
+SELECT c.name, a.name
+FROM character as c
+LEFT JOIN character_actor as ca
+ON c.id =ca.character_id
+LEFT JOIN actor as a
+ON ca.actor_id = a.id;
