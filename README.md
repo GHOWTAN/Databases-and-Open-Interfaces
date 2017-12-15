@@ -1,1 +1,1 @@
-# Databases-and-Open-Interfaces
+# Databases-and-Open-Interfaces exercises
